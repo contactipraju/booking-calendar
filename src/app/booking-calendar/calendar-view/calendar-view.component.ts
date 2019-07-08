@@ -17,6 +17,9 @@ export class CalendarViewComponent implements OnInit {
   bookings: any[];
   selectedBookings: any[];
 
+  modalRef_Multiselect: BsModalRef;
+  @ViewChild('multiselect') templateMultiSelect : TemplateRef<any>;
+
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
@@ -46,5 +49,38 @@ export class CalendarViewComponent implements OnInit {
   }
 
   datesSelected($event) {
+    this.findBookingToShow($event);
   }
+
+  findBookingToShow(e) {
+    const events = [];
+    const event:any = {};
+
+    for (const i in this.bookings) {
+      if (this.bookings[i].startDate <= e.endDate && this.bookings[i].endDate >= e.startDate) {
+        events.push(this.bookings[i]);
+      }
+    }
+
+    if (events.length > 1) {
+      this.selectedBookings = [];
+
+      for (let i=0; i<events.length; i++) {
+        this.selectedBookings.push(events[i]);
+      }
+
+      this.viewMultiSelect();
+    } else if(events.length == 1) {
+      this.editBooking(events[0]);
+    }
+  }
+
+  viewMultiSelect() {
+    this.openModal(this.templateMultiSelect);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef_Multiselect = this.modalService.show(template);
+  }
+
 }
