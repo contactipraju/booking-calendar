@@ -18,6 +18,8 @@ export class CalendarViewComponent implements OnInit {
   selectedBookings: any[];
 
   modalRef_Multiselect: BsModalRef;
+  modalRef_EditBooking: BsModalRef;
+
   @ViewChild('multiselect') templateMultiSelect : TemplateRef<any>;
 
   constructor(private modalService: BsModalService) { }
@@ -83,4 +85,12 @@ export class CalendarViewComponent implements OnInit {
     this.modalRef_Multiselect = this.modalService.show(template);
   }
 
+  editBooking(e) {
+    const initialState = {
+      booking: e
+    };
+
+    this.modalRef_EditBooking = this.modalService.show(EditBookingComponent, {initialState});
+    this.modalRef_EditBooking.content.modalRef = this.modalRef_EditBooking;
+  }
 }
