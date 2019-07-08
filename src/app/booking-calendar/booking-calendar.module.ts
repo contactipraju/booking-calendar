@@ -6,12 +6,14 @@ import { BookingService } from './booking.service';
 
 import { BookingCalendarComponent } from './booking-calendar/booking-calendar.component';
 import { TableViewComponent } from './table-view/table-view.component';
+import { YearCalendarComponent } from './year-calendar/year-calendar.component';
 import { YearTableComponent } from './year-table/year-table.component';
 
 @NgModule({
   declarations: [
     BookingCalendarComponent,
     TableViewComponent,
+    YearCalendarComponent,
     YearTableComponent
   ],
   imports: [
