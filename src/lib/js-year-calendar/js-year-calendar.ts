@@ -1,4 +1,5 @@
-/* =========================================================
+/* MODIFIED VERSION.. DO NOT REPLACE THIS WITH CDN VERSION, PLEASE CHECK THE FILE HISTORY IN REPOSITORY
+ * =========================================================
  * JS year calendar v0.1.0
  * Repo: https://github.com/year-calendar/js-year-calendar
  * =========================================================
@@ -622,8 +623,10 @@ export default class Calendar<T extends CalendarDataSourceElement> {
 				parent.style.backgroundColor = events[events.length - 1].color;
 				
 				var currentTime = currentDate.getTime();
-				
-				if (events[events.length - 1].startDate.getTime() == currentTime)
+				var eventStart = events[events.length - 1].startDate.getTime();
+				var eventEnd = events[events.length - 1].endDate.getTime();
+
+				if (eventStart == currentTime)
 				{
 					parent.classList.add('day-start');
 					
@@ -642,10 +645,18 @@ export default class Calendar<T extends CalendarDataSourceElement> {
 						parent.style.background = `linear-gradient(-45deg, ${events[events.length - 1].color}, ${events[events.length - 1].color} 49%, ${otherColor} 51%, ${otherColor})`;
 					}
 					else if (this.options.roundRangeLimits) {
-						parent.classList.add('round-left');
+						if(eventEnd == currentTime) {
+							parent.classList.add('round-all');
+						} else {
+							if (eventStart + 7 > eventEnd) {
+								parent.classList.add('round-left');
+							} else {
+								parent.classList.add('round-top-left');
+							}
+						}
 					}
 				}
-				else if (events[events.length - 1].endDate.getTime() == currentTime)
+				else if (eventEnd == currentTime)
 				{
 					parent.classList.add('day-end');
 					
@@ -664,7 +675,11 @@ export default class Calendar<T extends CalendarDataSourceElement> {
 						parent.style.background = `linear-gradient(135deg, ${events[events.length - 1].color}, ${events[events.length - 1].color} 49%, ${otherColor} 51%, ${otherColor})`;
 					}
 					else if (this.options.roundRangeLimits) {
-						parent.classList.add('round-right');
+						if(eventEnd - 7 < eventStart) {
+							parent.classList.add('round-right');
+						} else {
+							parent.classList.add('round-bottom-right');
+						}
 					}
 				}
 				break;

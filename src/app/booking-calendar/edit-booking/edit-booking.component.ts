@@ -11,7 +11,7 @@ import * as moment           from 'moment';
 export class EditBookingComponent implements OnInit {
   booking: any;
 
-  constructor() { }
+  constructor(public modalRef: BsModalRef) { }
 
   ngOnInit() {
     console.log('booking: ', this.booking);
