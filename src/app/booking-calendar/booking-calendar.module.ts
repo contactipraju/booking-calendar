@@ -25,7 +25,7 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
     CommonModule,
     ModalModule.forRoot(),
     RouterModule.forRoot([
-      { path: 'booking-calendar', component: BookingCalendarComponent }
+      { path: '', component: BookingCalendarComponent }
     ])
   ],
   exports: [
