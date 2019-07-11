@@ -1,4 +1,5 @@
-/* =========================================================
+/* MODIFIED VERSION.. DO NOT REPLACE THIS WITH CDN VERSION, PLEASE CHECK THE FILE HISTORY IN REPOSITORY
+ * =========================================================
  * JS year calendar v0.1.0
  * Repo: https://github.com/year-calendar/js-year-calendar
  * =========================================================
@@ -143,16 +144,35 @@
   border-right: 1px solid #eee;
   padding: 5px;
 }
+.calendar table.month td.day.round-top-left {
+  -webkit-border-radius: 8px 0 0 0px;
+  -moz-border-radius: 8px 0 0 0px;
+  border-radius: 8px 0 0 0px;
+}
 .calendar table.month td.day.round-left {
   -webkit-border-radius: 8px 0 0 8px;
   -moz-border-radius: 8px 0 0 8px;
   border-radius: 8px 0 0 8px;
 }
+
+.calendar table.month td.day.round-bottom-right {
+  webkit-border-radius: 0 0 8px 0 ;
+  -moz-border-radius: 0 0 8px 0;
+  border-radius: 0 0 8px 0;
+}
+
 .calendar table.month td.day.round-right {
   webkit-border-radius: 0 8px 8px 0 ;
   -moz-border-radius: 0 8px 8px 0;
   border-radius: 0 8px 8px 0;
 }
+
+.calendar table.month td.day.round-all {
+  webkit-border-radius: 8px 8px 8px 8px ;
+  -moz-border-radius: 8px 8px 8px 8px;
+  border-radius: 8px 8px 8px 8px;
+}
+
 .calendar table.month td.day .day-content {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
