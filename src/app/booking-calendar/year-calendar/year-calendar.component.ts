@@ -32,6 +32,8 @@ export class YearCalendarComponent implements OnInit {
       dataSource: this.data,
 
       enableRangeSelection: true,
+      roundRangeLimits: true,
+
       selectRange: function(e) {
         emit(e.startDate, e.endDate);
       },
