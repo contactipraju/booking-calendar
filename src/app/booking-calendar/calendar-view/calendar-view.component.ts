@@ -38,7 +38,6 @@ export class CalendarViewComponent implements OnInit {
 
   findBookingToShow(e) {
     const events = [];
-    const event:any = {};
 
     for (const i in this.bookings) {
       if (this.bookings[i].startDate <= e.endDate && this.bookings[i].endDate >= e.startDate) {
@@ -54,13 +53,17 @@ export class CalendarViewComponent implements OnInit {
       }
 
       this.viewMultiSelect(this.selectedBookings);
-    } else if(events.length == 1) {
+    }
+    else if(events.length == 1) {
       this.editBooking(events[0]);
+    }
+    else {
+      this.createBooking(e);
     }
   }
 
   viewMultiSelect(bookings) {
-    console.log("CalendarBookingsComponent - viewMultiSelect: ", bookings);
+    console.log("CalendarViewComponent - viewMultiSelect: ", bookings);
 
     const initialState = {
       list: bookings
@@ -70,8 +73,26 @@ export class CalendarViewComponent implements OnInit {
     this.modalRef_Multiselect.content.modalRef = this.modalRef_Multiselect;
   }
 
-  editBooking(e) {
+  createBooking(e) {
+    console.log("CalendarViewComponent - createBooking: ", e);
+
     const initialState = {
+      mode: "create",
+      booking: {
+        startDate: e.startDate,
+        endDate: e.endDate
+      }
+    };
+
+    this.modalRef_EditBooking = this.modalService.show(EditBookingComponent, { initialState });
+    this.modalRef_EditBooking.content.modalRef = this.modalRef_EditBooking;
+  }
+
+  editBooking(e) {
+    console.log("CalendarViewComponent - createBooking: ", e);
+
+    const initialState = {
+      mode: "edit",
       booking: e
     };
 
