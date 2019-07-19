@@ -27,28 +27,10 @@ export class CalendarViewComponent implements OnInit {
 
   ngOnInit() {
     console.log("CalendarViewComponent: ", this.data);
-    this.prepareData();
-  }
-
-  prepareData() {
-    this.bookings = [];
-
-    for(let i=0; i<this.data.length; i++) {
-      this.bookings.push({
-        id: this.data[i].id,
-        type: this.data[i].type,
-        startDate: new Date(this.data[i].startDate),
-        endDate: new Date(this.data[i].endDate)
-      });
-    }
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     //console.log("changes: ", changes);
-  }
-
-  mom(d) {
-    return moment(d).format("D MMM YYYY");
   }
 
   datesSelected($event) {
@@ -87,10 +69,6 @@ export class CalendarViewComponent implements OnInit {
 
     this.modalRef_Multiselect = this.modalService.show(MultiselectListComponent, { initialState });
     this.modalRef_Multiselect.content.modalRef = this.modalRef_Multiselect;
-  }
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef_Multiselect = this.modalService.show(template);
   }
 
   editBooking(e) {
