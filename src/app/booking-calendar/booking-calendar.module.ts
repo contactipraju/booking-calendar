@@ -11,6 +11,7 @@ import { TableViewComponent } from './table-view/table-view.component';
 import { YearCalendarComponent } from './year-calendar/year-calendar.component';
 import { YearTableComponent } from './year-table/year-table.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
+import { MultiselectListComponent } from './multiselect-list/multiselect-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
     TableViewComponent,
     YearCalendarComponent,
     YearTableComponent,
-    EditBookingComponent
+    EditBookingComponent,
+    MultiselectListComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,7 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
   exports: [
     BookingCalendarComponent
   ],
-  entryComponents: [EditBookingComponent],
+  entryComponents: [EditBookingComponent, MultiselectListComponent],
   providers: [BookingService]
 })
 export class BookingCalendarModule { }
