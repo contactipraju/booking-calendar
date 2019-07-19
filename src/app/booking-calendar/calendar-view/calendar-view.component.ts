@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import * as moment                    from 'moment';
 import { EditBookingComponent}        from '../edit-booking/edit-booking.component';
+import { MultiselectListComponent }   from '../multiselect-list/multiselect-list.component';
 
 @Component({
   selector: 'bc-calendar-view',
@@ -12,9 +13,8 @@ import { EditBookingComponent}        from '../edit-booking/edit-booking.compone
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent implements OnInit {
-  @Input() data: any;
+  @Input() bookings: any;
 
-  bookings: any[];
   selectedBookings: any[];
 
   modalRef_Multiselect: BsModalRef;
@@ -25,29 +25,11 @@ export class CalendarViewComponent implements OnInit {
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-    console.log("CalendarViewComponent: ", this.data);
-    this.prepareData();
-  }
-
-  prepareData() {
-    this.bookings = [];
-
-    for(let i=0; i<this.data.length; i++) {
-      this.bookings.push({
-        id: this.data[i].id,
-        type: this.data[i].type,
-        startDate: new Date(this.data[i].startDate),
-        endDate: new Date(this.data[i].endDate)
-      });
-    }
+    console.log("CalendarViewComponent: ", this.bookings);
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     //console.log("changes: ", changes);
-  }
-
-  mom(d) {
-    return moment(d).format("D MMM YYYY");
   }
 
   datesSelected($event) {
@@ -56,7 +38,6 @@ export class CalendarViewComponent implements OnInit {
 
   findBookingToShow(e) {
     const events = [];
-    const event:any = {};
 
     for (const i in this.bookings) {
       if (this.bookings[i].startDate <= e.endDate && this.bookings[i].endDate >= e.startDate) {
@@ -71,22 +52,47 @@ export class CalendarViewComponent implements OnInit {
         this.selectedBookings.push(events[i]);
       }
 
-      this.viewMultiSelect();
-    } else if(events.length == 1) {
+      this.viewMultiSelect(this.selectedBookings);
+    }
+    else if(events.length == 1) {
       this.editBooking(events[0]);
+    }
+    else {
+      this.createBooking(e);
     }
   }
 
-  viewMultiSelect() {
-    this.openModal(this.templateMultiSelect);
+  viewMultiSelect(bookings) {
+    console.log("CalendarViewComponent - viewMultiSelect: ", bookings);
+
+    const initialState = {
+      list: bookings
+    };
+
+    this.modalRef_Multiselect = this.modalService.show(MultiselectListComponent, { initialState });
+    this.modalRef_Multiselect.content.modalRef = this.modalRef_Multiselect;
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef_Multiselect = this.modalService.show(template);
+  createBooking(e) {
+    console.log("CalendarViewComponent - createBooking: ", e);
+
+    const initialState = {
+      mode: "create",
+      booking: {
+        startDate: e.startDate,
+        endDate: e.endDate
+      }
+    };
+
+    this.modalRef_EditBooking = this.modalService.show(EditBookingComponent, { initialState });
+    this.modalRef_EditBooking.content.modalRef = this.modalRef_EditBooking;
   }
 
   editBooking(e) {
+    console.log("CalendarViewComponent - createBooking: ", e);
+
     const initialState = {
+      mode: "edit",
       booking: e
     };
 

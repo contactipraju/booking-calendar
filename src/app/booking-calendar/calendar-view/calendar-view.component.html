@@ -1,32 +1,3 @@
 <div class="calendar-bookings">
   <bc-year-calendar [data]='bookings' (emitter)="datesSelected($event)"></bc-year-calendar>
 </div>
-
-<ng-template #multiselect>
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Multiple Bookings</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label for="multiple-bookings" class="col-12 control-label">Which Booking Would You Like To Select?</label>
-          <div class="col-12">
-            <select name="multi-select" class="form-control modal-input" id="multi-select">
-              <option *ngFor="let booking of selectedBookings" [value]="booking.id">
-                ({{booking.id}}): {{mom(booking.startDate)}} - {{mom(booking.endDate)}}
-              </option>
-            </select>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" id="cancel-multi">Back</button>
-      <button type="button" class="btn btn-primary" id="select-multi">Select</button>
-    </div>
-  </div>
-</ng-template>
