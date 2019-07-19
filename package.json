@@ -22,6 +22,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "js-year-calendar": "^1.0.0-alpha.6",
+    "noty": "^3.2.0-beta",
     "moment": "^2.24.0",
     "ngx-bootstrap": "^5.0.0",
     "rxjs": "~6.3.3",
