@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef }        from 'ngx-bootstrap/modal';
 
 import * as moment           from 'moment';
+import { Notifications }     from '../../utils/notifications';
 
 @Component({
   selector: 'bc-edit-booking',
@@ -30,10 +31,20 @@ export class EditBookingComponent implements OnInit {
 
   saveBooking() {
     console.log('EditBookingComponent - saveBooking: ', this.booking);
+
+    Notifications.showSuccessNotification(this.mode === 'create'? "Booking created successfully" : "Booking updated successfully");
+    //Notifications.showSuccessNotification(this.mode === 'create'? "Booking created failed" : "Booking update failed");
+
+    this.modalRef.hide();
   }
 
   deleteBooking() {
     console.log('EditBookingComponent - deleteBooking: ', this.booking);
+
+    Notifications.showErrorNotification("Booking deleted successfully");
+    //Notifications.showErrorNotification("Booking deletion failed");
+
+    this.modalRef.hide();
   }
 
   mom(d) {
