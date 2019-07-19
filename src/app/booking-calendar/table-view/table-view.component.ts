@@ -12,7 +12,7 @@ export class TableViewComponent implements OnInit {
 
   table:any = {
     columnTitles: ["ID", "Booking Type", "From", "To"],
-    props: ["id", "type", "startDate", "endDate"],
+    props: ["id", "type", "startDateFormatted", "endDateFormatted"],
     data: []
   };
 
