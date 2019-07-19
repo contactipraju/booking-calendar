@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import * as moment                    from 'moment';
 import { EditBookingComponent}        from '../edit-booking/edit-booking.component';
+import { MultiselectListComponent }   from '../multiselect-list/multiselect-list.component';
 
 @Component({
   selector: 'bc-calendar-view',
@@ -71,14 +72,21 @@ export class CalendarViewComponent implements OnInit {
         this.selectedBookings.push(events[i]);
       }
 
-      this.viewMultiSelect();
+      this.viewMultiSelect(this.selectedBookings);
     } else if(events.length == 1) {
       this.editBooking(events[0]);
     }
   }
 
-  viewMultiSelect() {
-    this.openModal(this.templateMultiSelect);
+  viewMultiSelect(bookings) {
+    console.log("CalendarBookingsComponent - viewMultiSelect: ", bookings);
+
+    const initialState = {
+      list: bookings
+    };
+
+    this.modalRef_Multiselect = this.modalService.show(MultiselectListComponent, { initialState });
+    this.modalRef_Multiselect.content.modalRef = this.modalRef_Multiselect;
   }
 
   openModal(template: TemplateRef<any>) {
