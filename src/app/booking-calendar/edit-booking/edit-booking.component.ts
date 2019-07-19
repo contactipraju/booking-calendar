@@ -13,6 +13,15 @@ export class EditBookingComponent implements OnInit {
   booking: any;
   showDeleteConfirmation: boolean = false;
 
+  bookingTypes: string[] = [
+    "Holiday",
+    "Time Off",
+    "Doctor",
+    "School Holidays",
+    "Christmas Break",
+    "Vacation"
+  ];
+
   constructor(public modalRef: BsModalRef) { }
 
   ngOnInit() {
