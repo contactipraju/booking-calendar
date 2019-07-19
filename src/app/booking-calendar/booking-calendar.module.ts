@@ -1,5 +1,6 @@
 import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule }  from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ModalModule }  from 'ngx-bootstrap';
 
@@ -25,6 +26,7 @@ import { MultiselectListComponent } from './multiselect-list/multiselect-list.co
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ModalModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: BookingCalendarComponent }
