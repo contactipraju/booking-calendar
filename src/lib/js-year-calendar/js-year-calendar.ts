@@ -623,8 +623,9 @@ export default class Calendar<T extends CalendarDataSourceElement> {
 				parent.style.backgroundColor = events[events.length - 1].color;
 				
 				var currentTime = currentDate.getTime();
-				var eventStart = events[events.length - 1].startDate.getTime();
-				var eventEnd = events[events.length - 1].endDate.getTime();
+				var eventStart = events[events.length - 1].startDate.setHours(0,0,0);
+				var eventEnd = events[events.length - 1].endDate.setHours(0,0,0);
+				var sevenDays = 7 * 86400000;
 
 				if (eventStart == currentTime)
 				{
@@ -648,7 +649,7 @@ export default class Calendar<T extends CalendarDataSourceElement> {
 						if(eventEnd == currentTime) {
 							parent.classList.add('round-all');
 						} else {
-							if (eventStart + 7 > eventEnd) {
+							if (eventStart + sevenDays > eventEnd) {
 								parent.classList.add('round-left');
 							} else {
 								parent.classList.add('round-top-left');
@@ -675,7 +676,7 @@ export default class Calendar<T extends CalendarDataSourceElement> {
 						parent.style.background = `linear-gradient(135deg, ${events[events.length - 1].color}, ${events[events.length - 1].color} 49%, ${otherColor} 51%, ${otherColor})`;
 					}
 					else if (this.options.roundRangeLimits) {
-						if(eventEnd - 7 < eventStart) {
+						if(eventEnd - sevenDays < eventStart) {
 							parent.classList.add('round-right');
 						} else {
 							parent.classList.add('round-bottom-right');
