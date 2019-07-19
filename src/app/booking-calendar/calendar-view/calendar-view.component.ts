@@ -13,9 +13,8 @@ import { MultiselectListComponent }   from '../multiselect-list/multiselect-list
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent implements OnInit {
-  @Input() data: any;
+  @Input() bookings: any;
 
-  bookings: any[];
   selectedBookings: any[];
 
   modalRef_Multiselect: BsModalRef;
@@ -26,7 +25,7 @@ export class CalendarViewComponent implements OnInit {
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-    console.log("CalendarViewComponent: ", this.data);
+    console.log("CalendarViewComponent: ", this.bookings);
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {

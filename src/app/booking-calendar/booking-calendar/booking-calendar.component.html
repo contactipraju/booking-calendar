@@ -5,7 +5,7 @@
         <bc-table-view    *ngIf="store.bookings && store.bookings.length" [data]="store.bookings"></bc-table-view>
       </div>
       <div class="col-sm-6 col-md-8 col-lg-9 order-sm-first">
-        <bc-calendar-view *ngIf="store.bookings && store.bookings.length" [data]="store.bookings"></bc-calendar-view>
+        <bc-calendar-view *ngIf="store.bookings && store.bookings.length" [bookings]="store.bookings"></bc-calendar-view>
       </div>
     </div>
   </div>
