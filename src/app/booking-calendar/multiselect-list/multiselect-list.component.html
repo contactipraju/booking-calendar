@@ -1,7 +1,7 @@
 <div class="modal-content">
   <div class="modal-header">
     <h4 class="modal-title pull-left">Multiple Bookings</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef_Multiselect.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -11,8 +11,8 @@
         <label for="multiple-bookings" class="col-12 control-label">Which Booking Would You Like To Select?</label>
         <div class="col-12">
           <select name="multi-select" class="form-control modal-input" id="multi-select">
-            <option *ngFor="let booking of selectedBookings" [value]="booking.id">
-              ({{booking.id}}): {{mom(booking.startDate)}} - {{mom(booking.endDate)}}
+            <option *ngFor="let booking of list" [value]="booking.id">
+              ({{booking.id}}): {{booking.startDateFormatted}} - {{booking.endDateFormatted}}
             </option>
           </select>
         </div>
