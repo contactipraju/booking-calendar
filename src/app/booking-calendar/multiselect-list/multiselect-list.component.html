@@ -10,7 +10,7 @@
       <div class="form-group">
         <label for="multiple-bookings" class="col-12 control-label">Which Booking Would You Like To Select?</label>
         <div class="col-12">
-          <select name="multi-select" class="form-control modal-input" id="multi-select">
+          <select name="multi-select" class="form-control modal-input" id="multi-select" [(ngModel)]="selectedBookingId">
             <option *ngFor="let booking of list" [value]="booking.id">
               ({{booking.id}}): {{booking.startDateFormatted}} - {{booking.endDateFormatted}}
             </option>
@@ -20,7 +20,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" id="cancel-multi">Back</button>
-    <button type="button" class="btn btn-primary" id="select-multi">Select</button>
+    <button type="button" class="btn btn-default" id="cancel-multi" (click)="modalRef.hide()">Back</button>
+    <button type="button" class="btn btn-primary" id="select-multi" (click)="onSelectBooking()">Select</button>
   </div>
 </div>

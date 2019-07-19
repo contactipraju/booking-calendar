@@ -12,7 +12,7 @@ export class MultiselectListComponent implements OnInit {
   list: any;
   selectedBookingId: number;
 
-  modalRef:  BsModalRef;
+  modalRefEdit:  BsModalRef;
 
   constructor(private modalService: BsModalService) { }
 
@@ -45,7 +45,7 @@ export class MultiselectListComponent implements OnInit {
       booking: selectedBooking
     };
 
-    this.modalRef = this.modalService.show(EditBookingComponent, { initialState });
-    this.modalRef.content.modalRef = this.modalRef;
+    this.modalRefEdit = this.modalService.show(EditBookingComponent, { initialState });
+    this.modalRefEdit.content.modalRef = this.modalRefEdit;
   }
 }
