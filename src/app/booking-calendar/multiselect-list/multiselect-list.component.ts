@@ -14,7 +14,7 @@ export class MultiselectListComponent implements OnInit {
 
   modalRefEdit:  BsModalRef;
 
-  constructor(private modalService: BsModalService) { }
+  constructor(public modalRef: BsModalRef, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.selectedBookingId = this.list[0].id;
