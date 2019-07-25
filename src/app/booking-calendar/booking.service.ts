@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of }          from 'rxjs';
 import { catchError, map, tap }    from 'rxjs/operators';
 
-import { Root, Bookings }          from './booking.model';
+import { Root, Booking }           from './booking.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,7 +21,7 @@ export class BookingService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl) {
   }
 
-  public getUserBookings(userId: string): Observable<Bookings[]> {
+  public getUserBookings(userId: string): Observable<Booking[]> {
     return this.http.get<Root>(this.baseUrl + this.bookingsJson)
       .pipe(
         map(x => x.bookings),

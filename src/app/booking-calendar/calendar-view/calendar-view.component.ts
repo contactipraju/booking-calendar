@@ -4,6 +4,9 @@ import { TemplateRef, ViewChild   }   from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import * as moment                    from 'moment';
+
+import { Booking }                    from './../booking.model';
+
 import { EditBookingComponent}        from '../edit-booking/edit-booking.component';
 import { MultiselectListComponent }   from '../multiselect-list/multiselect-list.component';
 
@@ -13,9 +16,9 @@ import { MultiselectListComponent }   from '../multiselect-list/multiselect-list
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent implements OnInit {
-  @Input() bookings: any;
+  @Input() bookings: Booking[];
 
-  selectedBookings: any[];
+  selectedBookings: Booking[];
 
   modalRef_Multiselect: BsModalRef;
   modalRef_EditBooking: BsModalRef;
@@ -62,7 +65,7 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-  viewMultiSelect(bookings) {
+  viewMultiSelect(bookings: Booking[]) {
     console.log("CalendarViewComponent - viewMultiSelect: ", bookings);
 
     const initialState = {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 
 import { BookingService }    from './../booking.service';
+import { Store }             from './../booking.model';
 
 import { DateFormats }       from '../../utils/date';
 
@@ -13,9 +14,9 @@ import { DateFormats }       from '../../utils/date';
 export class BookingCalendarComponent implements OnInit {
 
   // TODO: Move this to a store object (Ngrx?)
-  store:any = {
+  store: Store = {
     user: {
-      id: 123
+      id: "123"
     },
     bookings: []
   };
