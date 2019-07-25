@@ -1,4 +1,19 @@
-export interface Bookings {
+export interface User {
+  id: string;
+}
+
+export interface Store {
+  user: User;
+  bookings: Booking[];
+}
+
+export interface Table {
+  columnTitles: string[];
+  props: string[];
+  data: Booking[];
+}
+
+export interface Booking {
   id: number;
   startDate: Date;
   endDate: Date;
@@ -6,5 +21,5 @@ export interface Bookings {
 }
 
 export interface Root {
-  bookings: Bookings[];
+  bookings: Booking[];
 }

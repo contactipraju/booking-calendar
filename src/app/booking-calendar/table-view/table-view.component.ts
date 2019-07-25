@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment';
-import { DateFormats } from '../../utils/date';
+
+import { Booking, Table } from './../booking.model';
+import { DateFormats }    from '../../utils/date';
 
 @Component({
   selector: 'bc-table-view',
@@ -8,9 +10,9 @@ import { DateFormats } from '../../utils/date';
   styleUrls: ['./table-view.component.scss']
 })
 export class TableViewComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: Booking[];
 
-  table:any = {
+  table: Table = {
     columnTitles: ["ID", "Booking Type", "From", "To"],
     props: ["id", "type", "startDateFormatted", "endDateFormatted"],
     data: []
@@ -22,16 +24,12 @@ export class TableViewComponent implements OnInit {
     this.sortBookings(this.data);
   }
 
-  formattedDate = (date) => {
-    return moment(date).format("D MMM YYYY");
-  }
-
   onTableRow() {
   }
 
-  sortBookings(bookings) {
+  sortBookings(bookings: Booking[]) {
     bookings.sort((a,b) => {
-      return a.from - b.from;
+      return a.startDate.getTime() - b.startDate.getTime();
     });
 
     for (let i=0; i<bookings.length; i++) {

@@ -1,17 +1,24 @@
+/* Angular Modules */
 import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ModalModule }  from 'ngx-bootstrap';
 
+/* Third-party Modules */
+import { ModalModule } from 'ngx-bootstrap';
+
+/* Services */
 import { BookingService } from './booking.service';
 
+/* Components */
 import { BookingCalendarComponent } from './booking-calendar/booking-calendar.component';
-import { CalendarViewComponent } from './calendar-view/calendar-view.component';
-import { TableViewComponent } from './table-view/table-view.component';
-import { YearCalendarComponent } from './year-calendar/year-calendar.component';
-import { YearTableComponent } from './year-table/year-table.component';
-import { EditBookingComponent } from './edit-booking/edit-booking.component';
+import { CalendarViewComponent }    from './calendar-view/calendar-view.component';
+import { TableViewComponent }       from './table-view/table-view.component';
+
+import { YearCalendarComponent }    from './year-calendar/year-calendar.component';
+import { YearTableComponent }       from './year-table/year-table.component';
+
+import { EditBookingComponent }     from './edit-booking/edit-booking.component';
 import { MultiselectListComponent } from './multiselect-list/multiselect-list.component';
 
 @NgModule({
