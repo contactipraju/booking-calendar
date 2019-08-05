@@ -4,6 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+/* Ngrx Modules, for Store */
+import { StoreModule }                 from '@ngrx/store';
+import { EffectsModule }               from '@ngrx/effects';
+import { StoreDevtoolsModule }         from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 /* Third-party Modules */
 import { ModalModule } from 'ngx-bootstrap';
 
