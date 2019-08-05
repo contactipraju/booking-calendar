@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef }        from 'ngx-bootstrap/modal';
 
+import { Store, select }      from '@ngrx/store';
+import { IAppState }          from './../../store/state/app.state';
+import { DeleteBooking }      from './../../store/actions/booking.actions';
+
 import * as moment           from 'moment';
 import { Notifications }     from '../../utils/notifications';
 
@@ -23,7 +27,10 @@ export class EditBookingComponent implements OnInit {
     "Vacation"
   ];
 
-  constructor(public modalRef: BsModalRef) { }
+  constructor(
+    private _store: Store<IAppState>,
+    public modalRef: BsModalRef
+  ) { }
 
   ngOnInit() {
     console.log('booking: ', this.booking);
@@ -40,6 +47,7 @@ export class EditBookingComponent implements OnInit {
 
   deleteBooking() {
     console.log('EditBookingComponent - deleteBooking: ', this.booking);
+    this._store.dispatch(new DeleteBooking(this.booking.id));
 
     Notifications.showErrorNotification("Booking deleted successfully");
     //Notifications.showErrorNotification("Booking deletion failed");
