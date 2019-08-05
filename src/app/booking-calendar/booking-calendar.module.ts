@@ -69,6 +69,6 @@ import { MultiselectListComponent } from './multiselect-list/multiselect-list.co
     BookingCalendarComponent
   ],
   entryComponents: [EditBookingComponent, MultiselectListComponent],
-  providers: [BookingService]
+  providers: [BookingService, UserService]
 })
 export class BookingCalendarModule { }
