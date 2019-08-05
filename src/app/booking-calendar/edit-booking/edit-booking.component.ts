@@ -33,14 +33,14 @@ export class EditBookingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('booking: ', this.booking);
+    console.log('EditBookingComponent - ngOnInit: ', this.booking);
   }
 
   saveBooking() {
     console.log('EditBookingComponent - saveBooking: ', this.booking);
 
-    Notifications.showSuccessNotification(this.mode === 'create'? "Booking created successfully" : "Booking updated successfully");
-    //Notifications.showSuccessNotification(this.mode === 'create'? "Booking created failed" : "Booking update failed");
+    //Notifications.showSuccessNotification(this.mode === 'create'? "Booking created successfully" : "Booking updated successfully");
+    //Notifications.showErrorNotification(this.mode === 'create'? "Booking created failed" : "Booking update failed");
 
     this.modalRef.hide();
   }
@@ -49,7 +49,7 @@ export class EditBookingComponent implements OnInit {
     console.log('EditBookingComponent - deleteBooking: ', this.booking);
     this._store.dispatch(new DeleteBooking(this.booking.id));
 
-    Notifications.showErrorNotification("Booking deleted successfully");
+    //Notifications.showSuccessNotification("Booking deleted successfully");
     //Notifications.showErrorNotification("Booking deletion failed");
 
     this.modalRef.hide();
