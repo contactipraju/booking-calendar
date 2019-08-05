@@ -1,15 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as moment from 'moment';
+import { OnChanges, SimpleChange  } from '@angular/core';
 
 import { Booking, Table } from './../booking.model';
-import { DateFormats }    from '../../utils/date';
 
 @Component({
   selector: 'bc-table-view',
   templateUrl: './table-view.component.html',
   styleUrls: ['./table-view.component.scss']
 })
-export class TableViewComponent implements OnInit {
+export class TableViewComponent implements OnChanges {
   @Input() data: Booking[];
 
   table: Table = {
@@ -21,7 +20,15 @@ export class TableViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.sortBookings(this.data);
+    console.log("TableViewComponent - ngOnInit: ", this.data);
+  }
+
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    console.log("TableViewComponent - ngOnChanges: ", changes);
+
+    if(this.data) {
+      this.sortBookings(this.data);
+    }
   }
 
   onTableRow() {
@@ -32,6 +39,7 @@ export class TableViewComponent implements OnInit {
       return a.startDate.getTime() - b.startDate.getTime();
     });
 
+    this.table.data = [];
     for (let i=0; i<bookings.length; i++) {
       this.table.data.push(bookings[i]);
     }
