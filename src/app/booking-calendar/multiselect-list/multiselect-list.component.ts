@@ -6,7 +6,7 @@ import { EditBookingComponent}        from '../edit-booking/edit-booking.compone
 @Component({
   selector: 'app-multiselect-list',
   templateUrl: './multiselect-list.component.html',
-  styleUrls: ['./multiselect-list.component.sass']
+  styleUrls: ['./multiselect-list.component.scss']
 })
 export class MultiselectListComponent implements OnInit {
   list: any;

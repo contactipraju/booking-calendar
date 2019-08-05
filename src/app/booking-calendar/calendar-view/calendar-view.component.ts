@@ -28,11 +28,11 @@ export class CalendarViewComponent implements OnInit {
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-    console.log("CalendarViewComponent: ", this.bookings);
+    console.log("CalendarViewComponent - ngOnInit: ", this.bookings);
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    //console.log("changes: ", changes);
+    console.log("CalendarViewComponent - ngOnChanges: ", changes);
   }
 
   datesSelected($event) {
@@ -92,7 +92,7 @@ export class CalendarViewComponent implements OnInit {
   }
 
   editBooking(e) {
-    console.log("CalendarViewComponent - createBooking: ", e);
+    console.log("CalendarViewComponent - editBooking: ", e);
 
     const initialState = {
       mode: "edit",
