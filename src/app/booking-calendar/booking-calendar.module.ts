@@ -55,6 +55,9 @@ import { MultiselectListComponent } from './multiselect-list/multiselect-list.co
   imports: [
     CommonModule,
     FormsModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([UserEffects, BookingEffects, ConfigEffects]),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router'}),
     ModalModule.forRoot(),
     RouterModule.forRoot([
       { path: 'users', component: UsersComponent },
