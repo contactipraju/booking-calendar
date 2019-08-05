@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter }  from '@angular/core';
+import { OnInit, Input, Output }    from '@angular/core';
+import { OnChanges, SimpleChange  } from '@angular/core';
 
 // TODO: Review this when the issue (https://github.com/year-calendar/js-year-calendar/issues/6) is resolved
 // and get rid of the library and import it from the library under node_modules/js-year-calendar
@@ -23,7 +25,20 @@ export class YearCalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("year-calendar - ngOnInit: ", this.data);
+    console.log("YearCalendarComponent - ngOnInit: ", this.data);
+    this.initializeCalendar();
+  }
+
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    console.log("YearCalendarComponent - ngOnChanges: ", changes);
+
+    if(this.calendar && changes.data.previousValue != changes.data.currentValue) {
+      this.calendar.setDataSource(this.data);
+    }
+  }
+
+  initializeCalendar() {
+    console.log("YearCalendarComponent - initializeCalendar: ", this.data);
 
     const emit = (from, to) => {
       this.emitter.emit({startDate: from, endDate: to});
