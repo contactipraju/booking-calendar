@@ -13,8 +13,18 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 /* Third-party Modules */
 import { ModalModule } from 'ngx-bootstrap';
 
+/* Store Reducers */
+import { appReducers }    from './../store/reducers/app.reducers';
+
+/* Store Effects */
+import { UserEffects }    from './../store/effects/user.effects';
+import { BookingEffects } from './../store/effects/booking.effects';
+
 /* Services */
-import { BookingService } from './booking.service';
+import { UserService }    from './../services/user.service';
+import { BookingService } from './../services/booking.service';
+
+import { environment }    from 'src/environments/environment';
 
 /* Components */
 import { BookingCalendarComponent } from './booking-calendar/booking-calendar.component';
