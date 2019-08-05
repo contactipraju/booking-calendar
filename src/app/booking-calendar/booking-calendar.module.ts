@@ -27,6 +27,9 @@ import { BookingService } from './../services/booking.service';
 import { environment }    from 'src/environments/environment';
 
 /* Components */
+import { UsersComponent }     from './users/users.component';
+import { UsersListComponent } from './users-list/users-list.component';
+
 import { BookingCalendarComponent } from './booking-calendar/booking-calendar.component';
 import { CalendarViewComponent }    from './calendar-view/calendar-view.component';
 import { TableViewComponent }       from './table-view/table-view.component';
@@ -45,14 +48,18 @@ import { MultiselectListComponent } from './multiselect-list/multiselect-list.co
     YearCalendarComponent,
     YearTableComponent,
     EditBookingComponent,
-    MultiselectListComponent
+    MultiselectListComponent,
+    UsersComponent,
+    UsersListComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ModalModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: BookingCalendarComponent }
+      { path: 'users', component: UsersComponent },
+      { path: 'user/:id', component: BookingCalendarComponent },
+      { path: '', redirectTo: '/users', pathMatch: 'full' }
     ])
   ],
   exports: [
