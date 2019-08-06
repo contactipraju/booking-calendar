@@ -2,12 +2,12 @@ import { Component, EventEmitter }  from '@angular/core';
 import { OnInit, Input, Output }    from '@angular/core';
 import { OnChanges, SimpleChange  } from '@angular/core';
 
+import { IBooking } from '../../models/booking.interface';
+
 // TODO: Review this when the issue (https://github.com/year-calendar/js-year-calendar/issues/6) is resolved
 // and get rid of the library and import it from the library under node_modules/js-year-calendar
 // import Calendar from "js-year-calendar"; // Ideal usage, once issue resolves
 import Calendar from "../../../lib/js-year-calendar/js-year-calendar";  // Temporary solution
-
-import { IBooking } from '../../models/booking.interface';
 
 @Component({
   selector: 'bc-year-calendar',
@@ -18,7 +18,7 @@ export class YearCalendarComponent implements OnInit, OnChanges {
   @Input() data: IBooking[];
   @Output() emitter = new EventEmitter<object>();
 
-  calendar: any;
+  calendar: any = null;
   options: any = {};
 
   constructor() {
