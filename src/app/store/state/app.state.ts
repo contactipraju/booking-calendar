@@ -1,6 +1,6 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
-import { IUserState,    initialUserState } from './user.state';
+import { IUserState,    initialUserState }    from './user.state';
 import { IBookingState, initialBookingState } from './booking.state';
 
 export interface IAppState {

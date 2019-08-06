@@ -7,15 +7,15 @@ import { OnChanges, SimpleChange  } from '@angular/core';
 // import Calendar from "js-year-calendar"; // Ideal usage, once issue resolves
 import Calendar from "../../../lib/js-year-calendar/js-year-calendar";  // Temporary solution
 
-import { Booking } from '../booking.model';
+import { IBooking } from '../../models/booking.interface';
 
 @Component({
   selector: 'bc-year-calendar',
   templateUrl: './year-calendar.component.html',
   styleUrls: ['./year-calendar.component.scss']
 })
-export class YearCalendarComponent implements OnInit {
-  @Input() data: Booking[];
+export class YearCalendarComponent implements OnInit, OnChanges {
+  @Input() data: IBooking[];
   @Output() emitter = new EventEmitter<object>();
 
   calendar: any;

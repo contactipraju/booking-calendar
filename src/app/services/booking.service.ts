@@ -14,15 +14,15 @@ export class BookingService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl) {
   }
 
-  private getUrl(id: string) {
+  private getUrl(id: number) {
     return this.baseUrl + '/assets/bookings-' + id + '.json';
   }
 
-  public getBookings(id: string): Observable<IBookingHttp> {
+  public getBookings(id: number): Observable<IBookingHttp> {
     return this.http.get<IBookingHttp>(this.getUrl(id));
   }
 
-  public deleteBooking(id: string): any {
+  public deleteBooking(id: number): any {
     return this.http.get<IBookingHttp>(this.getUrl(id));
   }
 }

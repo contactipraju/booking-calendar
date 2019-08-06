@@ -24,8 +24,6 @@ import { BookingEffects } from './../store/effects/booking.effects';
 import { UserService }    from './../services/user.service';
 import { BookingService } from './../services/booking.service';
 
-import { environment }    from 'src/environments/environment';
-
 /* Components */
 import { UsersComponent }     from './users/users.component';
 import { UsersListComponent } from './users-list/users-list.component';

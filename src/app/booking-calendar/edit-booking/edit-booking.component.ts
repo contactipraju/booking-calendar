@@ -7,6 +7,7 @@ import { DeleteBooking }      from './../../store/actions/booking.actions';
 
 import * as moment           from 'moment';
 import { Notifications }     from '../../utils/notifications';
+import { IBooking }          from 'src/app/models/booking.interface';
 
 @Component({
   selector: 'bc-edit-booking',
@@ -14,8 +15,8 @@ import { Notifications }     from '../../utils/notifications';
   styleUrls: ['./edit-booking.component.scss']
 })
 export class EditBookingComponent implements OnInit {
-  mode: any;
-  booking: any;
+  mode: string;
+  booking: IBooking;
   showDeleteConfirmation: boolean = false;
 
   bookingTypes: string[] = [

@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OnChanges, SimpleChange  } from '@angular/core';
 
-import { Booking, Table } from './../booking.model';
+import { IBooking, ITable }         from '../../models/booking.interface';
 
 @Component({
   selector: 'bc-table-view',
   templateUrl: './table-view.component.html',
   styleUrls: ['./table-view.component.scss']
 })
-export class TableViewComponent implements OnChanges {
-  @Input() data: Booking[];
+export class TableViewComponent implements OnInit, OnChanges {
+  @Input() data: IBooking[];
 
-  table: Table = {
+  table: ITable = {
     columnTitles: ["ID", "Booking Type", "From", "To"],
     props: ["id", "type", "startDateFormatted", "endDateFormatted"],
     data: []
@@ -34,7 +34,7 @@ export class TableViewComponent implements OnChanges {
   onTableRow() {
   }
 
-  sortBookings(bookings: Booking[]) {
+  sortBookings(bookings: IBooking[]) {
     bookings.sort((a,b) => {
       return a.startDate.getTime() - b.startDate.getTime();
     });

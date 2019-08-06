@@ -11,7 +11,7 @@ export enum EBookingActions {
 
 export class GetBookings implements Action {
   public readonly type = EBookingActions.GetBookings;
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 
 export class GetBookingsSuccess implements Action {
@@ -21,7 +21,7 @@ export class GetBookingsSuccess implements Action {
 
 export class DeleteBooking implements Action {
   public readonly type = EBookingActions.DeleteBooking;
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 
 export class DeleteBookingSuccess implements Action {
