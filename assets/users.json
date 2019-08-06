@@ -1,0 +1,12 @@
+{
+    "users": [
+        {"id": 1, "name": "Prasada", "email": "prasadaindukuri@domain.com", "role": "admin"},
+        {"id": 2, "name": "Desmond", "email": "desmond@domain.com", "role": "admin"},
+        {"id": 4, "name": "Thiago", "email": "thiago@domain.com", "role": "user"},
+        {"id": 5, "name": "Noemi", "email": "noemi@domain.com", "role": "manager"},
+        {"id": 7, "name": "Jay", "email": "jay@domain.com", "role": "user"},
+        {"id": 8, "name": "Guy Mcarthur", "email": "guymacarthur@domain.com", "role": "manager"},
+        {"id": 3, "name": "Danny", "email": "danny@domain.com", "role": "admin"},
+        {"id": 9, "name": "Christine", "email": "christine@domain.com", "role": "admin"}
+    ]
+}
