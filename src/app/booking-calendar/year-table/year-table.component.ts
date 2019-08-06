@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter }  from '@angular/core';
+import { OnInit, Input, Output }    from '@angular/core';
 import { OnChanges, SimpleChange  } from '@angular/core';
+
+import { IBooking } from '../../models/booking.interface';
 
 @Component({
   selector: 'bc-year-table',
@@ -8,6 +11,7 @@ import { OnChanges, SimpleChange  } from '@angular/core';
 })
 export class YearTableComponent implements OnInit, OnChanges {
   @Input() data: any;
+  @Output() emitter = new EventEmitter<object>();
 
   constructor() { }
 
@@ -17,5 +21,9 @@ export class YearTableComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     //console.log("YearTableComponent - data: ", this.data);
+  }
+
+  selectRow(booking: IBooking) {
+    this.emitter.emit(booking);
   }
 }

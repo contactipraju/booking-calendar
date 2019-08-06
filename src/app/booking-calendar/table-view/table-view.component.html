@@ -1,4 +1,4 @@
 <div id="booking-ahoy-col">
   <h3>Bookings</h3>
-  <bc-year-table *ngIf="table && table.data && table.data.length" [data]="table"></bc-year-table>
+  <bc-year-table *ngIf="table && table.data && table.data.length" [data]="table" (emitter)="bookingSelected($event)"></bc-year-table>
 </div>
