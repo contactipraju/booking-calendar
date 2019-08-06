@@ -40,6 +40,8 @@ export class EditBookingComponent implements OnInit {
   saveBooking() {
     console.log('EditBookingComponent - saveBooking: ', this.booking);
 
+    //if present.. startDateInputFormat and endDateInputFormat have the modified dates
+
     //Notifications.showSuccessNotification(this.mode === 'create'? "Booking created successfully" : "Booking updated successfully");
     //Notifications.showErrorNotification(this.mode === 'create'? "Booking created failed" : "Booking update failed");
 
