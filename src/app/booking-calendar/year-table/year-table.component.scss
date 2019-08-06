@@ -7,6 +7,10 @@
     color: #fff;
 }
 
+.yacht-table tr.weekly-row {
+    cursor: pointer;
+}
+
 .yacht-table td {
     padding: 5px 0 5px 10px;
     font-size: 12px;

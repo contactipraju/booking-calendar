@@ -29,7 +29,7 @@ const deleteBooking = (bookings: IBooking[], id:any) => {
   return newB;
 }
 
-export const bookingReducers = (state = initialBookingState, action: BookingActions): IBookingState => {
+export function bookingReducers(state = initialBookingState, action: BookingActions): IBookingState {
   switch(action.type) {
     case EBookingActions.GetBookingsSuccess: {
       return {
