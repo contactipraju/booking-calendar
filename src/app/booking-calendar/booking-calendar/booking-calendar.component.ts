@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute }    from '@angular/router';
+import { Component, OnInit }  from '@angular/core';
+import { ActivatedRoute }     from '@angular/router';
 
-import { BookingService }    from './../booking.service';
-import { Store }             from './../booking.model';
+import { Store, select }      from '@ngrx/store';
 
-import { DateFormats }       from '../../utils/date';
+import { IAppState }          from './../../store/state/app.state';
+import { GetBookings }        from './../../store/actions/booking.actions';
+import { selectBookingList }  from './../../store/selectors/booking.selectors';
 
 @Component({
   selector: 'bc-booking-calendar',
@@ -12,49 +13,15 @@ import { DateFormats }       from '../../utils/date';
   styleUrls: ['./booking-calendar.component.scss']
 })
 export class BookingCalendarComponent implements OnInit {
+  bookings$ = this._store.pipe(select(selectBookingList));
 
-  // TODO: Move this to a store object (Ngrx?)
-  store: Store = {
-    user: {
-      id: "123"
-    },
-    bookings: []
-  };
-
-  constructor(private activatedRoute: ActivatedRoute, private bookingService: BookingService) {
+  constructor(
+    private _store: Store<IAppState>,
+    private activatedRoute: ActivatedRoute
+    ) {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(params => {
-      const param = params.get('id');
-      if (param) {
-        this.store.user.id = param;
-      }
-
-      this.loadBookings();
-    });
-  }
-
-  processBookings(bookings) {
-    for(let i=0; i<bookings.length; i++) {
-      bookings[i].startDate = new Date(bookings[i].startDate),
-      bookings[i].endDate   = new Date(bookings[i].endDate),
-
-      bookings[i].startDateFormatted = DateFormats.formattedDate(bookings[i].startDate);
-      bookings[i].endDateFormatted   = DateFormats.formattedDate(bookings[i].endDate);
-    }
-
-    return bookings;
-  }
-
-  loadBookings() {
-    this.bookingService.getUserBookings(this.store.user.id).subscribe(
-      data => {
-        console.log("loadBookings: ", data);
-        this.store.bookings = this.processBookings(data);
-      },
-      () => {},
-      () => {}
-    );
+    this._store.dispatch(new GetBookings(this.activatedRoute.snapshot.params.id));
   }
 }

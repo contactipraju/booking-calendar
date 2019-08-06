@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef }        from 'ngx-bootstrap/modal';
 
+import { Store, select }      from '@ngrx/store';
+import { IAppState }          from './../../store/state/app.state';
+import { DeleteBooking }      from './../../store/actions/booking.actions';
+
 import * as moment           from 'moment';
 import { Notifications }     from '../../utils/notifications';
+import { IBooking }          from 'src/app/models/booking.interface';
 
 @Component({
   selector: 'bc-edit-booking',
@@ -10,8 +15,8 @@ import { Notifications }     from '../../utils/notifications';
   styleUrls: ['./edit-booking.component.scss']
 })
 export class EditBookingComponent implements OnInit {
-  mode: any;
-  booking: any;
+  mode: string;
+  booking: IBooking;
   showDeleteConfirmation: boolean = false;
 
   bookingTypes: string[] = [
@@ -23,25 +28,29 @@ export class EditBookingComponent implements OnInit {
     "Vacation"
   ];
 
-  constructor(public modalRef: BsModalRef) { }
+  constructor(
+    private _store: Store<IAppState>,
+    public modalRef: BsModalRef
+  ) { }
 
   ngOnInit() {
-    console.log('booking: ', this.booking);
+    console.log('EditBookingComponent - ngOnInit: ', this.booking);
   }
 
   saveBooking() {
     console.log('EditBookingComponent - saveBooking: ', this.booking);
 
-    Notifications.showSuccessNotification(this.mode === 'create'? "Booking created successfully" : "Booking updated successfully");
-    //Notifications.showSuccessNotification(this.mode === 'create'? "Booking created failed" : "Booking update failed");
+    //Notifications.showSuccessNotification(this.mode === 'create'? "Booking created successfully" : "Booking updated successfully");
+    //Notifications.showErrorNotification(this.mode === 'create'? "Booking created failed" : "Booking update failed");
 
     this.modalRef.hide();
   }
 
   deleteBooking() {
     console.log('EditBookingComponent - deleteBooking: ', this.booking);
+    this._store.dispatch(new DeleteBooking(this.booking.id));
 
-    Notifications.showErrorNotification("Booking deleted successfully");
+    //Notifications.showSuccessNotification("Booking deleted successfully");
     //Notifications.showErrorNotification("Booking deletion failed");
 
     this.modalRef.hide();

@@ -1,0 +1,8 @@
+{
+    "bookings": [
+        {"id": 8, "startDate": "2019-07-11T00:00:00", "endDate": "2019-07-21T00:00:00", "type": "Holiday"},
+        {"id": 3, "startDate": "2019-04-11T00:00:00", "endDate": "2019-04-25T00:00:00", "type": "School Holidays"},
+        {"id": 9, "startDate": "2019-12-20T00:00:00", "endDate": "2019-12-28T00:00:00", "type": "Christmas Break"},
+        {"id": 6, "startDate": "2019-05-01T00:00:00", "endDate": "2019-05-11T00:00:00", "type": "Vacation"}
+    ]
+}

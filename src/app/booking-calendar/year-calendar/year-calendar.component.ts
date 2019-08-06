@@ -1,29 +1,44 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter }  from '@angular/core';
+import { OnInit, Input, Output }    from '@angular/core';
+import { OnChanges, SimpleChange  } from '@angular/core';
+
+import { IBooking } from '../../models/booking.interface';
 
 // TODO: Review this when the issue (https://github.com/year-calendar/js-year-calendar/issues/6) is resolved
 // and get rid of the library and import it from the library under node_modules/js-year-calendar
 // import Calendar from "js-year-calendar"; // Ideal usage, once issue resolves
 import Calendar from "../../../lib/js-year-calendar/js-year-calendar";  // Temporary solution
 
-import { Booking } from '../booking.model';
-
 @Component({
   selector: 'bc-year-calendar',
   templateUrl: './year-calendar.component.html',
   styleUrls: ['./year-calendar.component.scss']
 })
-export class YearCalendarComponent implements OnInit {
-  @Input() data: Booking[];
+export class YearCalendarComponent implements OnInit, OnChanges {
+  @Input() data: IBooking[];
   @Output() emitter = new EventEmitter<object>();
 
-  calendar: any;
+  calendar: any = null;
   options: any = {};
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log("year-calendar - ngOnInit: ", this.data);
+    console.log("YearCalendarComponent - ngOnInit: ", this.data);
+    this.initializeCalendar();
+  }
+
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    console.log("YearCalendarComponent - ngOnChanges: ", changes);
+
+    if(this.calendar && changes.data.previousValue != changes.data.currentValue) {
+      this.calendar.setDataSource(this.data);
+    }
+  }
+
+  initializeCalendar() {
+    console.log("YearCalendarComponent - initializeCalendar: ", this.data);
 
     const emit = (from, to) => {
       this.emitter.emit({startDate: from, endDate: to});

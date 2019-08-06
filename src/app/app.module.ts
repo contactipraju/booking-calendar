@@ -12,6 +12,9 @@ import { ModalModule }             from 'ngx-bootstrap/modal';
 /* Routing Module */
 import { AppRoutingModule }        from './app-routing.module';
 
+import { StoreDevtoolsModule }     from '@ngrx/store-devtools';
+import { environment }             from 'src/environments/environment';
+
 /* App Modules */
 import { BookingCalendarModule }   from './booking-calendar/booking-calendar.module';
 
@@ -27,6 +30,7 @@ import { AppComponent }            from './app.component';
     FormsModule,
     HttpClientModule,
     BookingCalendarModule,
+    StoreDevtoolsModule.instrument(),
     AppRoutingModule
   ],
   providers: [],

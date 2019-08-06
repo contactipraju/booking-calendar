@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <bc-table-view    *ngIf="store.bookings && store.bookings.length" [data]="store.bookings"></bc-table-view>
+        <bc-table-view    [data]="bookings$ | async"></bc-table-view>
       </div>
       <div class="col-sm-6 col-md-8 col-lg-9 order-sm-first">
-        <bc-calendar-view *ngIf="store.bookings && store.bookings.length" [bookings]="store.bookings"></bc-calendar-view>
+        <bc-calendar-view [bookings]="bookings$ | async"></bc-calendar-view>
       </div>
     </div>
   </div>
